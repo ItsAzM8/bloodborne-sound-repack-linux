@@ -1,10 +1,7 @@
 #!/bin/bash
 
 fsb_directory="${1}"
-
-if [[ ! -d "${fsb_directory}" ]]; then
-    echo "${fsb_directory} doesn't exist. Please provide a valid path containing fsb files."
-fi
+fsb_executable_path="fsmod_wineprefix/drive_c/Program Files (x86)/FMOD SoundSystem/FMOD Studio API Universal Windows Platform/bin/fsbankcl.exe"
 
 # Directory to store the result of FSB -> MP3. Will be cleaned up.
 fsb_extract_dir="temp_converted_fsb"
@@ -17,10 +14,29 @@ fsb_output_directory="repacked_fsb"
 
 # Path to the fsbank executable used to repack.
 # See <some-link-to-readme-i-guess> for installing in a Wine prefix.
-fsb_executable_path="fsmod_wineprefix/drive_c/Program Files/FMOD SoundSystem/FMOD Studio 1.08.30/fmodstudiocl.exe"
 
 # Cache diractory for fsbankcl.
 cache_dir=cache
+
+if [[ ! -d "${fsb_directory}" ]]; then
+    echo "${fsb_directory} doesn't exist. Please provide a valid path containing fsb files."
+fi
+
+
+if [[ ! $(which lame 2> /dev/null) ]]; then
+    echo "lame is not installed. Please install it."
+    exit 1
+fi
+
+if [[ ! $(which vgmstream-cli 2> /dev/null) ]]; then
+    echo "vgmstream-cli is not installed. Please install it."
+    exit 1
+fi
+
+if [[ ! -f "${fsb_executable_path}" ]]; then
+    echo "fsbankcl.exe is not present. Please check the Fmod \`fsbankcl\` install in the README."
+    exit 1
+fi
 
 function repack_mp3_to_fsb {
     fsb_file_path="${1}"
