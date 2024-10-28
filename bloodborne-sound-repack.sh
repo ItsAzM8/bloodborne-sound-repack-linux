@@ -13,10 +13,7 @@ fsb_files=($(ls "${fsb_directory}" | grep ".fsb"))
 fsb_output_directory="repacked_fsb"
 
 # Path to the fsbank executable used to repack.
-# See <some-link-to-readme-i-guess> for installing in a Wine prefix.
-
-# Cache diractory for fsbankcl.
-cache_dir=cache
+# See `Fmod `fsbankcl` install` in the README for installing in a Wine prefix.
 
 if [[ ! -d "${fsb_directory}" ]]; then
     echo "${fsb_directory} doesn't exist. Please provide a valid path containing fsb files."
@@ -55,8 +52,7 @@ function repack_mp3_to_fsb {
     # things.
     wine "${fsb_executable_path}" \
         -o "${fsb_output_directory}/${fsb_filename_no_ext}" "${mp3_input_directory}" \
-        -format mp3 -quality 25 -recursive \
-        -cache_dir "${cache_dir}" > /dev/null 2>&1
+        -format mp3 -quality 25 -recursive  > /dev/null 2>&1
 }
 
 function fsb_to_mp3 {
@@ -102,5 +98,5 @@ for fsb_file in "${fsb_files[@]}"; do
     repack_mp3_to_fsb "${fsb_directory}/${fsb_file}"
 done
 
-echo "Cleaning up ${cache_dir}."
-rm -r "${cache_dir}"
+echo "Cleaning up ${fsb_extract_dir}."
+rm -r "${fsb_extract_dir}"
