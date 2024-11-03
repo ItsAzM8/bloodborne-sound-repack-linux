@@ -1,0 +1,4 @@
+*.exe
+fsmod_wineprefix/
+repacked_fsb/
+temp_converted_fsb/
