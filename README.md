@@ -30,7 +30,7 @@ This is where the Wine dependency comes from.
 
 To get the tool, make an account at `https://www.fmod.com`, navigate to
 `Download`, then open the `FMOD Engine` dropdown, select `Older` above
-the version picker, and select `2.08.30 (Unsupported)`. Download the
+the version picker, and select `1.08.30 (Unsupported)`. Download the
 `Windows 10 UWP` version of FMOD engine.
 
 From this repo's root, run the following:
