@@ -15,7 +15,7 @@ to install.
 ### Arch Linux (using an AUR helper)
 
 ```bash
-yay -S lame vgmstream-git wine
+yay -S lame vgmstream-git wine jq
 ```
 
 ### Fmod `fsbankcl` install.
