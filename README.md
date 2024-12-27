@@ -6,6 +6,7 @@ A utility script to repack encrypted Bloodborne FSB files to get sound working f
 * `lame`
 * `vgmstream`
 * `wine`
+* `jq`
 * `fsbankcl` (see below)
 
 I've only tested this on Arch and don't have other distros hanging about to
